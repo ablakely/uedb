@@ -1,0 +1,8 @@
+{
+	"title": "Dark_Aaron's LDB",
+	"auth": {
+		"user": "Dark_Aaron",
+		"pass": "secret"
+	},
+	"db": "mongodb://localhost/uedb"
+}
