@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= conf.title %></title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/uedb.css" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<script src="js/map.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<ul class="nav nav-pills pull-right">
+					<li class="active"><a href="/"><i class="fa fa-home"></i></a></li>
+					<li><a href="/add"><i class="fa fa-edit"></i></a></li>
+				</ul>
+				<h3 class="text-muted"><%= conf.title %></h3>
+			</div>
+			<div id="ldbmap"></div>
+			<h3><%= l.name %></h3>
+		</div>
+	</body>
+</html>
