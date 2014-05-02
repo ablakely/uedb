@@ -45,9 +45,10 @@ String.prototype.generate = function(size) {
 };
 
 // Location Entry Model
-uedb.Location = new mongoose.model("Location", new mongoose.Schema({
+uedb.Location = mongoose.model("Location", new mongoose.Schema({
   name:   String,
   locationid: String,
+  streetviewImg: String,
   coords: [Number],
   description: String,
   built: Number,
