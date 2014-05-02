@@ -44,6 +44,10 @@ String.prototype.generate = function(size) {
         return res;
 };
 
+uedb.getStreetviewImage = function(coords, cb) {
+  return "http://maps.googleapis.com/maps/api/streetview?size=600x300&location="+coords+"&heading=0&pitch=-0.76&sensor=false";
+}
+
 // Location Entry Model
 uedb.Location = mongoose.model("Location", new mongoose.Schema({
   name:   String,

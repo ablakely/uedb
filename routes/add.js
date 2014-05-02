@@ -4,7 +4,16 @@ module.exports = function(app, uedb) {
 	});
 
 	app.post('/add', function(req, res) {
-		
+		var l = new uedb.Location({
+			name: 	req.body.inputName,
+			locationid: new String().generate(20),
+			coords: new String(req.body.inputCoordinates).replace(/\(|\)|\s/g, "").split(","),
+			streetviewImage: uedb.getStreetviewImage(new String(req.body.inputCoordinates).replace(/\(|\)|\s/g, ""))
+		});
+
+		l.save(function() {
+			res.redirect("/");
+		});
 	});
 
 }
