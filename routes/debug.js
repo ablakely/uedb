@@ -4,4 +4,8 @@ module.exports = function(app, uedb) {
 			res.json(locations);
 		})
 	})
+
+	app.get("/clear", function(req, res) {
+		uedb.Location.find().remove();
+	})
 }
