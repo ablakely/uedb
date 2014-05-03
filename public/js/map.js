@@ -70,7 +70,7 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById('ldbmap'), {
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     center: new google.maps.LatLng($("#ldbmap").data("lat"), $("#ldbmap").data("lon")),
-    zoom: 8
+    zoom: 18
   });
   }
 }
