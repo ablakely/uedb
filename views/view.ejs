@@ -18,8 +18,8 @@
 				</ul>
 				<h3 class="text-muted"><%= l.name %></h3>
 			</div>
-			<div class="col-md-5"><img src="<%= l.streetviewImg %>" /></div>
-			<div class="col-md-5"><div id="ldbmap"></div></div>
+			<div class="col-md-6"><img src="<%= l.streetviewImg %>" /></div>
+			<div class="col-md-6"><div id="ldbmap" data-lat="<%= l.coords[0] %>" data-lon="<%= l.coords[1] %>"></div></div>
 		</div>
 	</body>
 </html>
