@@ -105,6 +105,10 @@ function initialize() {
         window.markers.push(marker);
         bounds.extend(place.geometry.location);
 
+        if (places.length == 1) {
+          $("#inputCoordinates").val(place.geometry.location);
+        }
+
         google.maps.event.addListener(marker, 'click', function() {
           $("#inputCoordinates").val(this.position);
         });

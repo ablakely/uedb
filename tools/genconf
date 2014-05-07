@@ -1,0 +1,24 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+my $ofile 	= shift;
+my $dbtitle	= shift;
+my $username	= shift;
+my $password	= shift;
+my $mongodburl	= shift || "mongodb://localhost/uedb";
+
+open(my $file, ">$ofile") or die $!;
+print $file <<EOF;
+{
+	"title": "$dbtitle",
+	"auth": {
+		"user": "$username",
+		"pass": "$password"
+	},
+	"db": "$mongodburl"
+}
+EOF
+
+close $file or die $!;
