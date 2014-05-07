@@ -1,8 +1,0 @@
-{
-	"title": "Infiltrate It LDB",
-	"auth": {
-		"user": "Dark_Aaron",
-		"pass": "secret"
-	},
-	"db": "mongodb://localhost/uedb"
-}
