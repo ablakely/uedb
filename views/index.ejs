@@ -6,8 +6,11 @@
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/uedb.css" />
 
+		
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-		<script src="js/map.js"></script>
+    <script src="js/map.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -18,8 +21,18 @@
 				</ul>
 				<h3 class="text-muted"><%= conf.title %></h3>
 			</div>
-			<div id="ldbmap"></div>
-			<h3>Locations</h3>
+			<br />
+			<div class="col-md-1 hidden">
+				<ul class="nav nav-pills nav-stacked">
+					<% for (var i = 0; i < loc.length; i++) { %>
+					<li data-locationid="<%= loc[i].locationid %>"><a href="/location/<%= loc[i].locationid %>"><%= loc[i].name %></a></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class="col-md-12">
+				<div id="ldbmap" style="height:500px;" data-points="<%= points %>"></div>
+			</div>
+
 		</div>
 	</body>
 </html>

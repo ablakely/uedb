@@ -10,6 +10,10 @@
   line-height: 40px;
 }
 
+.view-description {
+  margin-top: 300px;
+}
+
 #ldbmap {
 	height: 300px;
 }

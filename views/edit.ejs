@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= conf.title %>: Editing "<%= l.name %>"</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="/css/uedb.css" />
+
+		 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<script src="/js/map.js"></script>
+	</head>
+	<body>
+		<form method="post">
+			<div class="container">
+				<div class="header">
+					<ul class="nav nav-pills pull-right">
+						<li><a href="/"><i class="fa fa-home"></i></a></li>
+						<li><a href="/edit/<%= l.locationid %>"><i class="fa fa-edit"></i></a></li>
+						<li><button type="submit" class="btn btn-primary">Save</button></li>
+					</ul>
+					<h3><a href="/">:</a> <input class="text-muted" type="text" name="name" value="<%= l.name %>"></h3>
+				</div>
+				<div class="col-md-6"><img src="<%= l.streetviewImg %>" /></div>
+					<div class="col-md-6"><div id="ldbmap" data-points="[[<%= l.coords[0] %>,<%= l.coords[1] %>]]"></div></div>
+					<br />
+					<div class="view-description">
+						<dl class="dl-horizontal">
+						<dt>Coordinates</dt>
+						<dd><input type="text" id="inputCoords" name="coords" value="(<%= l.coords[0] %>, <%= l.coords[1] %>)"></dd>
+						<dt>Description</dt>
+						<dd><textarea name="description" style="margin: 0px; width: 945px; height: 111px;"><%= l.description %></textarea></dd>
+						<dt>Built</dt>
+						<dd><input name="built" type="number" value="<%= l.built %>"></dd>
+						<dt>Closed</dt>
+						<dd><input name="closed" type="number" value="<%= l.closed %>"></dd>
+						<dt>Security</dt>
+						<dd>
+							<input type="checkbox" name="security" value="Fences"> Fences
+							<input type="checkbox" name="security" value="Barbed Wire"> Barbed Wire
+							<input type="checkbox" name="security" value="Razor Wire"> Razor Wire<br />
+							<input type="checkbox" name="security" value="Dogs"> Dogs
+							<input type="checkbox" name="security" value="Part-time Gaurd"> Part-time Gaurd
+							<input type="checkbox" name="security" value="24 hour Gaurd"> 24 hour Gaurd<br />
+							<input type="checkbox" name="security" value="Locked Gates"> Locked Gates
+							<input type="checkbox" name="security" value="Welded Doors"> Welded Doors
+							<input type="checkbox" name="security" value="Wooden Boarding"> Wooden Boarding<br />
+							<input type="checkbox" name="security" value="Cameras"> Cameras
+							<input type="checkbox" name="security" value="None"> None
+						</dd>
+						<dt>Status</dt>
+						<dd>
+							<select name="status" value="<%= l.status %>">
+								<option value="Abandoned">Abandoned</option>
+								<option value="Under Construction">Under Construction</option>
+								<option value="Being Demolished">Being Demolished</option>
+								<option value="Closed">Closed</option>
+								<option value="Active">Active</option>
+								<option value="Demolished">Demolished</option>
+								<option value="Repurposed">Repurposed</option>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
