@@ -11,6 +11,7 @@
     "ejs": "*",
     "mongoose": "*",
     "togeojson": "*",
-    "jsdom": "*"
+    "jsdom": "3.1.2",
+    "unzip": "*"
   }
 }

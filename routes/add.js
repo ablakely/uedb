@@ -1,4 +1,5 @@
 var fs        = require("fs");
+var unzip     = require("unzip");
 var togeojson = require("togeojson");
 var jsdom     = require("jsdom").jsdom;
 
@@ -20,7 +21,29 @@ module.exports = function(app, uedb) {
 				res.redirect("/");
 			});
 		} else {
-			var locations = togeojson.kml(jsdom(fs.readFileSync(req.files.inputFile.path, 'utf8')));
+			// Google Maps has started to export maps in .kmz format
+			// Use zlib to unzip then import the .kml file
+
+			if ((/.kmz$/.test(req.files.inputFile.name)) == true) {
+				fs.createReadStream(req.files.inputFile.path)
+					.pipe(unzip.Parse())
+					.on('entry', function (entry) {
+    					var fileName = entry.path;
+    					var type = entry.type; // 'Directory' or 'File' 
+    					var size = entry.size;
+    					if (/.kml$/.test(fileName) == true) {
+    						console.log(entry);
+      						entry.pipe(fs.createWriteStream('/tmp/map.kml'));
+    					} else {
+      						entry.autodrain();
+    					}
+  				});
+
+				var locations = togeojson.kml(jsdom(fs.readFileSync('/tmp/map.kml', 'utf8')));
+			} else {
+				var locations = togeojson.kml(jsdom(fs.readFileSync(req.files.inputFile.path, 'utf8')));
+			}
+
 			for (var i = 0; i < locations.features.length; i++) {
 				var newloc = new uedb.Location({
 					name: locations.features[i].properties.name,
