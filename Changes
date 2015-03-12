@@ -1,0 +1,5 @@
+0.0.1: Inital Release
+----------------------------------------------------------------
+0.0.2:
+	- Added support for the .kmz files Maps engine now exports.
+	- Updates to web interface.
